@@ -31,8 +31,10 @@ namespace JustGame.Script.Character
         {
             var damage = GetDamage();
             var health = other.gameObject.GetComponentInParent<Health>();
-            
-            health.TakeDamage(Mathf.Round(damage),m_invulnerableDurationCause,this.gameObject);
+            if (health != null)
+            {
+                health.TakeDamage(Mathf.Round(damage),m_invulnerableDurationCause,this.gameObject);
+            }
         }
     }
 }

@@ -9,8 +9,11 @@ namespace JustGame.Script.Character
     public class PlayerMovement : PlayerAbility
     {
         [SerializeField] private float m_moveSpeed;
+        [SerializeField] private float m_unitPerStep;
         [SerializeField] private Vector2 m_movingDirection;
-        
+
+        private bool m_isMoving;
+        private Vector2 m_nextPos;
         private InputManager m_inputManager;
         protected override void Start()
         {
@@ -26,33 +29,31 @@ namespace JustGame.Script.Character
                 return;
             }
 
-            if (m_inputManager.GetKeyDown(BindingAction.MOVE_LEFT))
+            if (m_isMoving) return;
+
+            if(m_inputManager.GetKeyClicked(BindingAction.MOVE_LEFT))
             {
                 m_movingDirection.x = -1;
             }
-            else if (m_inputManager.GetKeyDown(BindingAction.MOVE_RIGHT))
+            if(m_inputManager.GetKeyClicked(BindingAction.MOVE_RIGHT))
             {
                 m_movingDirection.x = 1;
             }
-            else
-            {
-                m_movingDirection.x = 0;
-            }
-            
-            if (!m_inputManager.IsInputActive) return;
-
-            if (m_inputManager.GetKeyDown(BindingAction.MOVE_UP))
+            if(m_inputManager.GetKeyClicked(BindingAction.MOVE_UP))
             {
                 m_movingDirection.y = 1;
             }
-            else if (m_inputManager.GetKeyDown(BindingAction.MOVE_DOWN))
+            if(m_inputManager.GetKeyClicked(BindingAction.MOVE_DOWN))
             {
                 m_movingDirection.y = -1;
             }
-            else
+
+            if (m_movingDirection != Vector2.zero)
             {
-                m_movingDirection.y = 0;
+                m_isMoving = true;
+                m_nextPos = (Vector2)transform.position + m_movingDirection * m_unitPerStep;
             }
+            
             base.HandleInput();
         }
 
@@ -64,7 +65,13 @@ namespace JustGame.Script.Character
 
         private void Movement()
         {
-            transform.Translate(m_movingDirection * ((m_moveSpeed/10) * Time.deltaTime));
+            if (!m_isMoving) return;
+            transform.position = Vector2.MoveTowards(transform.position, m_nextPos, Time.deltaTime * m_moveSpeed);
+            if ((Vector2)transform.position == m_nextPos)
+            {
+                m_isMoving = false;
+                m_movingDirection = Vector2.zero;
+            }
         }
     }
 }
