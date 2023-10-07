@@ -16,12 +16,12 @@ namespace JustGame.Script.Character
             m_isPermit = value;
         }
         
-        public virtual void Start()
+        protected virtual void Start()
         {
             
         }
         
-        public virtual void Update()
+        protected virtual void Update()
         {
             
         }

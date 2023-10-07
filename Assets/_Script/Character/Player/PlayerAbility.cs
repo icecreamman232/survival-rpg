@@ -6,12 +6,12 @@ namespace JustGame.Script.Character
     /// </summary>
     public class PlayerAbility : CharacterAbility
     {
-        public virtual void HandleInput()
+        protected virtual void HandleInput()
         {
             
         }
 
-        public override void Update()
+        protected override void Update()
         {
             if (!m_isPermit) return;
             HandleInput();

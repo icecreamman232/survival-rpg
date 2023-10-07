@@ -12,13 +12,13 @@ namespace JustGame.Script.Character
         [SerializeField] private Vector2 m_movingDirection;
         
         private InputManager m_inputManager;
-        public override void Start()
+        protected override void Start()
         {
             m_inputManager = InputManager.Instance;
             base.Start();
         }
 
-        public override void HandleInput()
+        protected override void HandleInput()
         {
             if (!m_inputManager.IsInputActive)
             {
@@ -56,7 +56,7 @@ namespace JustGame.Script.Character
             base.HandleInput();
         }
 
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
             Movement();
