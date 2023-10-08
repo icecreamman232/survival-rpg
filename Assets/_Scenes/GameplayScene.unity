@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 13753158}
   - component: {fileID: 13753157}
   - component: {fileID: 13753159}
+  - component: {fileID: 13753160}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: WorldGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 13753156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: -4.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -191,6 +192,20 @@ MonoBehaviour:
   m_waterTile: {fileID: 11400000, guid: 0c13bb6e3e4e90848a9c1e618e02611b, type: 2}
   m_scale: 30
   m_offsetRange: {x: 0, y: 50}
+--- !u!114 &13753160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13753156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e3e7f5f41c57b4aaee5f93bc68a84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_worldRuntimeSet: {fileID: 11400000, guid: 3f67037b6dc5c5948a2818af65ea4296, type: 2}
+  m_worldGenerator: {fileID: 13753159}
 --- !u!1 &106283560
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,9 +650,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4e63fe5c5d4eb45b99a3d64aeaa71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_worldRuntimeSet: {fileID: 11400000, guid: 3f67037b6dc5c5948a2818af65ea4296, type: 2}
   m_cameraTransform: {fileID: 519420032}
   m_targetTransform: {fileID: 589725016}
   m_followingSpeed: 100
+  m_cameraSize: {x: 15, y: 8.5}
 --- !u!4 &589725016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2836536623084677965, guid: b658939bb07a63246b085198425188eb, type: 3}
@@ -994,8 +1011,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1333356633
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1050217098, guid: e8c319ed2d9389c46a4d4ce2c258bdec, type: 3}
   m_Color: {r: 0.48849118, g: 0.8301887, b: 0.3250267, a: 1}

@@ -18,6 +18,9 @@ namespace JustGame.Script.World
         [Header("Perlin Noise")] 
         [SerializeField] private float m_scale;
         [SerializeField] private Vector2 m_offsetRange;
+
+        public int MapWidth => m_mapWidth;
+        public int MapHeight => m_mapHeight;
         
         private float[] m_worldArr;
 
@@ -55,7 +58,7 @@ namespace JustGame.Script.World
             {
                 for (int x = 0; x < m_mapWidth; x++)
                 {
-                    SetProperTile(x, y, m_worldArr[x + y * m_mapWidth]);
+                    SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
                 }
             }
         }
