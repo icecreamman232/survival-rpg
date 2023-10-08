@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ground-tile
+  m_Name: ground-tile_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1193400726, guid: 390446e16453e234588b32fee0004d7c, type: 3}
+  m_Sprite: {fileID: -885064799, guid: 390446e16453e234588b32fee0004d7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
