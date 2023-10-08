@@ -186,12 +186,11 @@ MonoBehaviour:
   m_mapHeight: 150
   m_groundTilemap: {fileID: 106283563}
   m_waterTilemap: {fileID: 1183410569}
-  m_groundSample: 0.5
-  m_waterSample: 0.5
+  m_groundLevelValue: 0.4
   m_groundTiles: {fileID: 11400000, guid: b45b7a4d13605274cbd4bcae6b9ef26e, type: 2}
   m_waterTile: {fileID: 11400000, guid: 0c13bb6e3e4e90848a9c1e618e02611b, type: 2}
-  m_scale: 0.1
-  m_offset: {x: 0.5, y: 1.2}
+  m_scale: 30
+  m_offsetRange: {x: 0, y: 50}
 --- !u!1 &106283560
 GameObject:
   m_ObjectHideFlags: 0
