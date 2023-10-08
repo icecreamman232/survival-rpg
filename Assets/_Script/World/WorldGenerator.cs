@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace JustGame.Script.World
@@ -16,7 +15,6 @@ namespace JustGame.Script.World
         [Header("Tile list")]
         [SerializeField] private TileList m_groundTiles;
         [SerializeField] private TileBase m_waterTile;
-
         [Header("Perlin Noise")] 
         [SerializeField] private float m_scale;
         [SerializeField] private Vector2 m_offsetRange;

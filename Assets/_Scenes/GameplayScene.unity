@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -622,6 +623,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_camera: {fileID: 519420031}
   m_worldRuntimeSet: {fileID: 11400000, guid: 3f67037b6dc5c5948a2818af65ea4296, type: 2}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4e63fe5c5d4eb45b99a3d64aeaa71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cameraTransform: {fileID: 519420032}
+  m_targetTransform: {fileID: 589725016}
+  m_followingSpeed: 100
+--- !u!4 &589725016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2836536623084677965, guid: b658939bb07a63246b085198425188eb, type: 3}
+  m_PrefabInstance: {fileID: 6430650199434268793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1183410566
 GameObject:
   m_ObjectHideFlags: 0
