@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,6 +9,7 @@ namespace JustGame.Script.World
         [Header("Base")]
         [SerializeField] private int m_mapWidth;
         [SerializeField] private int m_mapHeight;
+        [SerializeField] private bool m_isGenerateDone;
         [SerializeField] private Tilemap m_groundTilemap;
         [SerializeField] private Tilemap m_waterTilemap;
         [Header("Sample limits")]
@@ -21,19 +23,21 @@ namespace JustGame.Script.World
 
         public int MapWidth => m_mapWidth;
         public int MapHeight => m_mapHeight;
+        public bool IsGenerateDone => m_isGenerateDone;
         
         private float[] m_worldArr;
-
+        
         private void Start()
         {
             m_worldArr = new float[m_mapWidth * m_mapHeight];
         }
 
         [ContextMenu("Generate world")]
-        private void GenerateWorld()
+        public void GenerateWorld()
         {
-            GenerateData();
-            RenderWorld();
+            StartCoroutine(GenerateWorldRoutine());
+            //GenerateData();
+            //RenderWorld();
         }
 
         private void GenerateData()
@@ -61,6 +65,28 @@ namespace JustGame.Script.World
                     SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
                 }
             }
+        }
+
+        private IEnumerator GenerateWorldRoutine()
+        {
+            m_isGenerateDone = false;
+            
+            GenerateData();
+            
+            m_groundTilemap.ClearAllTiles();
+            m_waterTilemap.ClearAllTiles();
+            
+            for (int y = 0; y < m_mapHeight; y++)
+            {
+                for (int x = 0; x < m_mapWidth; x++)
+                {
+                    SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
+                }
+
+                yield return null;
+            }
+
+            m_isGenerateDone = true;
         }
 
         private void SetProperTile(int x, int y, float sample)
