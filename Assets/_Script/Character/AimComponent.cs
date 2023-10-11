@@ -11,7 +11,7 @@ namespace JustGame.Script.Common
         [SerializeField] private Vector2 m_aimDirection;
         [SerializeField] private float m_angle;
         [SerializeField] private float m_offsetAngle;
-        private Vector2 m_clampAimDirection;
+        private float m_clampAngle;
         public Vector2 AimDirection => m_aimDirection;
         public Vector2 ClampAimDirection  
         {
@@ -49,6 +49,8 @@ namespace JustGame.Script.Common
             }
         }
 
+        public float ClampAngle => m_clampAngle;
+
         public float Angle => m_angle;
         
         private InputManager m_inputManager;
@@ -63,6 +65,7 @@ namespace JustGame.Script.Common
         {
             m_aimDirection = (m_inputManager.GetWorldMousePos() - transform.position).normalized;
             m_angle = Mathf.Atan2(m_aimDirection.y, m_aimDirection.x) * Mathf.Rad2Deg + m_offsetAngle;
+            m_clampAngle = Mathf.Atan2(ClampAimDirection.y, ClampAimDirection.x) * Mathf.Rad2Deg + m_offsetAngle;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace JustGame.Script.Character
 
         private void Update()
         {
-            transform.rotation = Quaternion.AngleAxis(m_aimComponent.Angle - 90f,Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(m_aimComponent.ClampAngle - 90f,Vector3.forward);
         }
     }
 }
