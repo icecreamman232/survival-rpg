@@ -111,5 +111,18 @@ namespace JustGame.Script.World
             //Debug.Log($"Sample {sample}");
             return sample;
         }
+
+        public Vector2 GetSpawnPointInWorldCoord()
+        {
+            int x = Random.Range(1,150);
+            int y = Random.Range(1,150);
+            while (m_worldArr[x + y * m_mapWidth] < 1)
+            {
+                x = Random.Range(1,150);
+                y = Random.Range(1,150);
+            }
+
+            return new Vector2((x - m_mapWidth/2) * 0.5f, (y - m_mapHeight/2)* 0.5f);
+        }
     }
 }
