@@ -12,12 +12,23 @@ namespace JustGame.Script.Character
         {
             if (!CheckDamageCondition()) return;
             
+            
             m_curHealth -= damage;
             
             m_healthEvent.RaiseEvent(MathHelpers.Remap(m_curHealth,0,m_maxHealth,0,1));
-            
+
             StartCoroutine(OnInvulnerable(invulnerableDuration));
             
+            if (m_curHealth <= 0)
+            {
+                Kill();
+            }
+        }
+
+        public void TakeSelfDamage(float damage)
+        {
+            m_curHealth -= damage;
+            m_healthEvent.RaiseEvent(MathHelpers.Remap(m_curHealth,0,m_maxHealth,0,1));
             if (m_curHealth <= 0)
             {
                 Kill();

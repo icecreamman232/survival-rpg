@@ -16,6 +16,8 @@ namespace JustGame.Script.Character
         
         protected SpriteRenderer m_spriteRenderer;
         protected bool m_isInvulnerable;
+
+        public bool IsInvulnerable => m_isInvulnerable;
         
         protected virtual void Start()
         {

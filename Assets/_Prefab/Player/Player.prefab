@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 1866142248117713335}
   - component: {fileID: 850787818714684020}
   - component: {fileID: 2923187605176612788}
+  - component: {fileID: 7119935416105907830}
   - component: {fileID: 5302118877277524435}
   m_Layer: 6
   m_Name: Player
@@ -559,11 +560,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b75c5899f736f4589bbc4e061bc6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 20
+  m_maxHealth: 50
   m_curHealth: 0
   m_flickerColor: {r: 0.8980393, g: 0.25490198, b: 0.25490198, a: 1}
   m_delayBetweenFlicks: 0.1
   m_healthEvent: {fileID: 11400000, guid: ae389b5104678d547af7d3e0eaf0ba81, type: 2}
+--- !u!114 &7119935416105907830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537573301576941775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a4a82ec4ed7dc42ac0cd9ce3d78339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHunger: 50
+  m_curHunger: 0
+  m_damageFrequency: 1
+  m_damageOnHunger: 3
+  m_playerHealth: {fileID: 2923187605176612788}
 --- !u!114 &5302118877277524435
 MonoBehaviour:
   m_ObjectHideFlags: 0
