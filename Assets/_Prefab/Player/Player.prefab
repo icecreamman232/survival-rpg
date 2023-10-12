@@ -582,6 +582,7 @@ MonoBehaviour:
   m_damageFrequency: 1
   m_damageOnHunger: 3
   m_playerHealth: {fileID: 2923187605176612788}
+  m_floatEvent: {fileID: 11400000, guid: f25f949c1d59d534cac31538d912ad10, type: 2}
 --- !u!114 &5302118877277524435
 MonoBehaviour:
   m_ObjectHideFlags: 0
