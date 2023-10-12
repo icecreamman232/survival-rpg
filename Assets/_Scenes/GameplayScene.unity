@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mapWidth: 150
   m_mapHeight: 150
+  m_isGenerateDone: 0
   m_groundTilemap: {fileID: 106283563}
   m_waterTilemap: {fileID: 1183410569}
   m_groundLevelValue: 0.4
@@ -704,6 +705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b364f18b46168489190f90685e868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerPrefab: {fileID: 8537573301576941775, guid: b658939bb07a63246b085198425188eb, type: 3}
+  m_worldGenerator: {fileID: 13753159}
 --- !u!1 &1183410566
 GameObject:
   m_ObjectHideFlags: 0

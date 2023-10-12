@@ -25,19 +25,17 @@ namespace JustGame.Script.World
         public int MapHeight => m_mapHeight;
         public bool IsGenerateDone => m_isGenerateDone;
         
-        private float[] m_worldArr;
+        private int[] m_worldArr;
         
         private void Start()
         {
-            m_worldArr = new float[m_mapWidth * m_mapHeight];
+            m_worldArr = new int[m_mapWidth * m_mapHeight];
         }
 
         [ContextMenu("Generate world")]
         public void GenerateWorld()
         {
             StartCoroutine(GenerateWorldRoutine());
-            //GenerateData();
-            //RenderWorld();
         }
 
         private void GenerateData()
@@ -48,23 +46,25 @@ namespace JustGame.Script.World
             {
                 for (int x = 0; x < m_mapWidth; x++)
                 {
-                    m_worldArr[x + y * m_mapWidth] = GetNoiseValue(x,y, offsetX, offsetY); //[0,1]
+                    float noiseValue = GetNoiseValue(x,y, offsetX, offsetY);
+                    m_worldArr[x + y * m_mapWidth] = ConvertNoiseToWorld(noiseValue);
                 }
             }
         }
 
-        private void RenderWorld()
+        private int ConvertNoiseToWorld(float noise)
         {
-            m_groundTilemap.ClearAllTiles();
-            m_waterTilemap.ClearAllTiles();
-            
-            for (int y = 0; y < m_mapHeight; y++)
+            if (noise < m_groundLevelValue)
             {
-                for (int x = 0; x < m_mapWidth; x++)
-                {
-                    SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
-                }
+                return 0;
             }
+            
+            if (noise >= m_groundLevelValue)
+            {
+                return 1;
+            }
+
+            return 1;
         }
 
         private IEnumerator GenerateWorldRoutine()
@@ -91,12 +91,12 @@ namespace JustGame.Script.World
 
         private void SetProperTile(int x, int y, float sample)
         {
-            if (sample < m_groundLevelValue)
+            if (sample < 1)
             {
                 m_waterTilemap.SetTile(new Vector3Int(x,y), m_waterTile) ;
             }
             
-            if (sample >= m_groundLevelValue)
+            if (sample >= 1)
             {
                 m_groundTilemap.SetTile(new Vector3Int(x,y), m_groundTiles.GetTileRandom());
             }
