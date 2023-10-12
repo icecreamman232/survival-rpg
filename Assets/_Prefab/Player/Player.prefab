@@ -563,6 +563,7 @@ MonoBehaviour:
   m_curHealth: 0
   m_flickerColor: {r: 0.8980393, g: 0.25490198, b: 0.25490198, a: 1}
   m_delayBetweenFlicks: 0.1
+  m_healthEvent: {fileID: 11400000, guid: ae389b5104678d547af7d3e0eaf0ba81, type: 2}
 --- !u!114 &5302118877277524435
 MonoBehaviour:
   m_ObjectHideFlags: 0
