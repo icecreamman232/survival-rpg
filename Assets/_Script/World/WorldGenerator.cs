@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace JustGame.Script.World
@@ -13,9 +14,13 @@ namespace JustGame.Script.World
         [SerializeField] private Tilemap m_groundTilemap;
         [SerializeField] private Tilemap m_waterTilemap;
         [Header("Sample limits")]
-        [SerializeField] private float m_groundLevelValue;
+        [SerializeField] private float m_maxWaterValue;
+        [SerializeField] private float m_maxGroundValue;
+        [SerializeField] private float m_maxGrassValue;
+        [SerializeField] private float m_percentToSpawnGrass;
         [Header("Tile list")]
         [SerializeField] private TileList m_groundTiles;
+        [SerializeField] private TileList m_grassTiles;
         [SerializeField] private TileBase m_waterTile;
         [Header("Perlin Noise")] 
         [SerializeField] private float m_scale;
@@ -54,14 +59,19 @@ namespace JustGame.Script.World
 
         private int ConvertNoiseToWorld(float noise)
         {
-            if (noise < m_groundLevelValue)
+            if (noise <= m_maxWaterValue)
             {
                 return 0;
             }
             
-            if (noise >= m_groundLevelValue)
+            if (noise > m_maxWaterValue && noise <= m_maxGroundValue)
             {
                 return 1;
+            }
+
+            if (noise > m_maxGroundValue && noise <= m_maxGrassValue)
+            {
+                return 2;
             }
 
             return 1;
@@ -89,16 +99,28 @@ namespace JustGame.Script.World
             m_isGenerateDone = true;
         }
 
-        private void SetProperTile(int x, int y, float sample)
+        private void SetProperTile(int x, int y, int sample)
         {
-            if (sample < 1)
+            switch (sample)
             {
-                m_waterTilemap.SetTile(new Vector3Int(x,y), m_waterTile) ;
-            }
-            
-            if (sample >= 1)
-            {
-                m_groundTilemap.SetTile(new Vector3Int(x,y), m_groundTiles.GetTileRandom());
+                //Water
+                case 0:
+                    m_waterTilemap.SetTile(new Vector3Int(x,y), m_waterTile) ;
+                    break;
+                //Ground
+                case 1:
+                    var randGround = Random.Range(0, 100);
+                    if (randGround < 40)
+                    {
+                        m_groundTilemap.SetTile(new Vector3Int(x,y), m_groundTiles.GetTileRandom());
+                    }
+                    break;
+                //Grass    
+                case 2:
+                    var rand = Random.Range(0, 100);
+                    m_groundTilemap.SetTile(new Vector3Int(x, y),
+                        rand <= m_percentToSpawnGrass ? m_grassTiles.GetTileRandom() : m_groundTiles.GetTileRandom());
+                    break;
             }
         }
 

@@ -188,8 +188,12 @@ MonoBehaviour:
   m_isGenerateDone: 0
   m_groundTilemap: {fileID: 106283563}
   m_waterTilemap: {fileID: 1183410569}
-  m_groundLevelValue: 0.4
+  m_maxWaterValue: 0.3
+  m_maxGroundValue: 0.5
+  m_maxGrassValue: 1
+  m_percentToSpawnGrass: 45
   m_groundTiles: {fileID: 11400000, guid: b45b7a4d13605274cbd4bcae6b9ef26e, type: 2}
+  m_grassTiles: {fileID: 11400000, guid: bbdc46255ff2a5a4e95157962fb16480, type: 2}
   m_waterTile: {fileID: 11400000, guid: 0c13bb6e3e4e90848a9c1e618e02611b, type: 2}
   m_scale: 30
   m_offsetRange: {x: 0, y: 50}
