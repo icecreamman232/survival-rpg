@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace JustGame.Script.Character
 {
-    public class PlayerWeaponHandler : MonoBehaviour
+    public class PlayerAxeHandler : MonoBehaviour
     {
         [SerializeField] private bool m_isPermit;
         [SerializeField] private AimComponent m_aimComponent;
-        [SerializeField] private float m_weaponRange;
-        [SerializeField] private BoxCollider2D m_weaponDamageArea;
-        [SerializeField] private AnimationParameter m_atkAnim;
+        [SerializeField] private float m_axeRange;
+        [SerializeField] private BoxCollider2D m_axeDamageArea;
+        [SerializeField] private AnimationParameter m_useAxeAnim;
         private InputManager m_inputManager;
-        private bool m_atkInProgress;
+        private bool m_AxeInProgress;
 
         public void SetPermission(bool value)
         {
@@ -24,7 +24,7 @@ namespace JustGame.Script.Character
         {
             m_inputManager = InputManager.Instance;
         }
-
+        
         private void Update()
         {
             if (!m_inputManager.IsInputActive) return;
@@ -41,29 +41,28 @@ namespace JustGame.Script.Character
         {
             StartCoroutine(AttackRoutine());
         }
-
+        
         private IEnumerator AttackRoutine()
         {
-            if (m_atkInProgress)
+            if (m_AxeInProgress)
             {
                 yield break;
             }
-            m_atkInProgress = true;
-            var atkPos = (Vector2)transform.position + m_aimComponent.ClampAimDirection * m_weaponRange;
-            m_weaponDamageArea.enabled = true;
-            m_weaponDamageArea.transform.position = atkPos;
-            m_atkAnim.SetTrigger();
-            yield return new WaitForSeconds(m_atkAnim.Duration);
-            m_weaponDamageArea.enabled = false;
-            m_weaponDamageArea.transform.localPosition = Vector2.zero;
-            m_atkInProgress = false;
+            m_AxeInProgress = true;
+            var atkPos = (Vector2)transform.position + m_aimComponent.ClampAimDirection * m_axeRange;
+            m_axeDamageArea.enabled = true;
+            m_axeDamageArea.transform.position = atkPos;
+            m_useAxeAnim.SetTrigger();
+            yield return new WaitForSeconds(m_useAxeAnim.Duration);
+            m_axeDamageArea.enabled = false;
+            m_axeDamageArea.transform.localPosition = Vector2.zero;
+            m_AxeInProgress = false;
         }
         
         public void WeaponStop()
         {
-            m_atkInProgress = false;
+            m_AxeInProgress = false;
             StopAllCoroutines();
         }
-    } 
+    }
 }
-
