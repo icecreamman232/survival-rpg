@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using JustGame.Script.Common;
 using JustGame.Script.World;
@@ -10,7 +11,12 @@ namespace JustGame.Script.Managers
         [SerializeField] private CameraFollowing m_cameraFollowing;
         [SerializeField] private GameObject m_playerPrefab;
         [SerializeField] private WorldGenerator m_worldGenerator;
-
+        [SerializeField] private WorldArea[] m_areas;
+        
+        private Transform m_playerRef;
+        private bool m_checked;
+        
+        
         [ContextMenu("Create world")]
         private void CreateWorld()
         {
@@ -25,8 +31,32 @@ namespace JustGame.Script.Managers
             worldPos.x -= 0.25f;
             worldPos.y -= 0.25f;
             var player = Instantiate(m_playerPrefab,worldPos , Quaternion.identity);
+            m_playerRef = player.transform;
             m_cameraFollowing.SetCameraPosition(worldPos);
             m_cameraFollowing.SetTarget(player.transform);
+        }
+
+        private void Update()
+        {
+            if (m_playerRef == null) return;
+            CheckCurrentArea();
+        }
+
+        private void CheckCurrentArea()
+        {
+            m_checked = false;
+            for (int i = 0; i < m_areas.Length; i++)
+            {
+                if (m_areas[i].IsInArea(m_playerRef.position) && !m_checked)
+                {
+                    m_areas[i].gameObject.SetActive(true);
+                    m_checked = true;
+                }
+                else
+                {
+                    m_areas[i].gameObject.SetActive(false);
+                }
+            }
         }
     }
 }
