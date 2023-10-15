@@ -17,6 +17,8 @@ namespace JustGame.Script.Common
 
         private Bounds m_cameraBounds;
 
+        public Bounds CameraBounds => m_cameraBounds;
+
         private void Awake()
         {
             m_canFollow = true;

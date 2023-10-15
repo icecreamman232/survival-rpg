@@ -15,6 +15,7 @@ namespace JustGame.Script.Managers
         
         private Transform m_playerRef;
         private bool m_checked;
+        private int m_lastAreaIndex;
 
         private void Start()
         {
@@ -39,6 +40,11 @@ namespace JustGame.Script.Managers
             m_playerRef = player.transform;
             m_cameraFollowing.SetCameraPosition(worldPos);
             m_cameraFollowing.SetTarget(player.transform);
+
+            for (int i = 0; i < m_areas.Length; i++)
+            {
+                m_areas[i].gameObject.SetActive(false);
+            }
         }
 
         private void Update()
@@ -54,12 +60,13 @@ namespace JustGame.Script.Managers
             {
                 if (m_areas[i].IsInArea(m_playerRef.position) && !m_checked)
                 {
+                    if (m_lastAreaIndex != i)
+                    {
+                        m_areas[m_lastAreaIndex].gameObject.SetActive(false);
+                    }
                     m_areas[i].gameObject.SetActive(true);
+                    m_lastAreaIndex = i;
                     m_checked = true;
-                }
-                else
-                {
-                    m_areas[i].gameObject.SetActive(false);
                 }
             }
         }
