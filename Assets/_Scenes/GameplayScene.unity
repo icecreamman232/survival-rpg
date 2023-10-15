@@ -200,12 +200,24 @@ MonoBehaviour:
   m_maxWaterValue: 0.3
   m_maxGroundValue: 0.5
   m_maxGrassValue: 1
+  m_maxTreeValue: 1
   m_percentToSpawnGrass: 45
   m_groundTiles: {fileID: 11400000, guid: b45b7a4d13605274cbd4bcae6b9ef26e, type: 2}
   m_grassTiles: {fileID: 11400000, guid: bbdc46255ff2a5a4e95157962fb16480, type: 2}
   m_waterTile: {fileID: 11400000, guid: 0c13bb6e3e4e90848a9c1e618e02611b, type: 2}
+  m_treePrefab: {fileID: 8546572706362476048, guid: 8534923306e0de64488ea4862a082a7b, type: 3}
   m_scale: 30
   m_offsetRange: {x: 0, y: 50}
+  m_areas:
+  - {fileID: 2080386035}
+  - {fileID: 1234208952}
+  - {fileID: 1402072414}
+  - {fileID: 1745977718}
+  - {fileID: 1130291068}
+  - {fileID: 1522009214}
+  - {fileID: 2112412274}
+  - {fileID: 1060281033}
+  - {fileID: 461398016}
 --- !u!114 &13753160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,7 +1350,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1333356633
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1050217098, guid: e8c319ed2d9389c46a4d4ce2c258bdec, type: 3}
   m_Color: {r: 0.48849118, g: 0.8301887, b: 0.3250267, a: 1}

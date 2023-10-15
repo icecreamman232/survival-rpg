@@ -15,8 +15,13 @@ namespace JustGame.Script.Managers
         
         private Transform m_playerRef;
         private bool m_checked;
-        
-        
+
+        private void Start()
+        {
+            CreateWorld();
+        }
+
+
         [ContextMenu("Create world")]
         private void CreateWorld()
         {

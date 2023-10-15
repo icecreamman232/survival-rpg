@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace JustGame.Script.World
@@ -8,7 +9,8 @@ namespace JustGame.Script.World
         [SerializeField] private Vector2 m_topLeft;
         [SerializeField] private Vector2 m_botRight;
         [SerializeField] private bool m_showCorner;
-        private void Start()
+
+        private void Awake()
         {
             m_topLeft = new Vector2(m_center.x - 25f/2, m_center.y + 25f/2);
             m_botRight = new Vector2(m_center.x + 25f/2, m_center.y - 25f/2);

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - World-object
   - 
   - 
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Water
     uniqueID: 483703563
+    locked: 0
+  - name: World-object
+    uniqueID: 837031957
     locked: 0
   - name: Player
     uniqueID: 2658742481

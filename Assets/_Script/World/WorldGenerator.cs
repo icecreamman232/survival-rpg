@@ -17,14 +17,18 @@ namespace JustGame.Script.World
         [SerializeField] private float m_maxWaterValue;
         [SerializeField] private float m_maxGroundValue;
         [SerializeField] private float m_maxGrassValue;
+        [SerializeField] private float m_maxTreeValue;
         [SerializeField] private float m_percentToSpawnGrass;
         [Header("Tile list")]
         [SerializeField] private TileList m_groundTiles;
         [SerializeField] private TileList m_grassTiles;
         [SerializeField] private TileBase m_waterTile;
+        [SerializeField] private GameObject m_treePrefab;
         [Header("Perlin Noise")] 
         [SerializeField] private float m_scale;
         [SerializeField] private Vector2 m_offsetRange;
+        [Header("Area")] 
+        [SerializeField] private WorldArea[] m_areas;
 
         public int MapWidth => m_mapWidth;
         public int MapHeight => m_mapHeight;
@@ -45,6 +49,7 @@ namespace JustGame.Script.World
 
         private void GenerateData()
         {
+            //Generate ground + water level
             var offsetX = Random.Range(m_offsetRange.x, m_offsetRange.y);
             var offsetY = Random.Range(m_offsetRange.x, m_offsetRange.y);
             for (int y = 0; y < m_mapHeight; y++)
@@ -55,8 +60,70 @@ namespace JustGame.Script.World
                     m_worldArr[x + y * m_mapWidth] = ConvertNoiseToWorld(noiseValue);
                 }
             }
+
+            for (int y = 0; y < m_mapHeight; y++)
+            {
+                for (int x = 0; x < m_mapWidth; x++)
+                {
+                    if (m_worldArr[x + y * m_mapWidth] == 3)
+                    {
+                        var worldPos = new Vector2((x - m_mapWidth/2f) * 0.5f, (y - m_mapHeight/2f)* 0.5f);
+                        worldPos.x += 0.25f;
+                        worldPos.y += 0.25f;
+                        //Create tree
+                        var tree = Instantiate(m_treePrefab, worldPos, Quaternion.identity);
+                        var area = GetAreaContainThis(worldPos.x, worldPos.y);
+                        if (area != null)
+                        {
+                            tree.transform.parent = area.transform;
+                        }
+                    }
+                }
+            }
+            
+            // var startX = 0;
+            // var endX = 50;
+            // var startY = 0;
+            // var endY = 50;
+            //
+            // for (int i = 0; i < 3; i++)
+            // {
+            //     for (int j = 0; j < 3; j++)
+            //     {
+            //         for (int y = startY; y < endY; y++)
+            //         {
+            //             for (int x = startX; x < endX; x++)
+            //             {
+            //                 float noiseValue = GetNoiseValue(x,y, offsetX, offsetY);
+            //                 m_worldArr[x + y * m_mapWidth] = ConvertNoiseToWorld(noiseValue);
+            //                 m_areas[i * 3 + j].SaveAreaData(m_worldArr[x + y * m_mapWidth]);
+            //             }
+            //         }
+            //         startX += 50;
+            //         endX += 50;
+            //     }
+            //
+            //     startX = 0;
+            //     endX = 50;
+            //     startY += 50;
+            //     endY += 50;
+            // }
+            
+            
         }
 
+        private WorldArea GetAreaContainThis(float x, float y)
+        {
+            for (int i = 0; i < m_areas.Length; i++)
+            {
+                if (m_areas[i].IsInArea(new Vector2(x, y)))
+                {
+                    return m_areas[i];
+                }
+            }
+            return null;
+        }
+        
         private int ConvertNoiseToWorld(float noise)
         {
             if (noise <= m_maxWaterValue)
@@ -71,8 +138,15 @@ namespace JustGame.Script.World
 
             if (noise > m_maxGroundValue && noise <= m_maxGrassValue)
             {
-                return 2;
+                var rand = Random.Range(0, 100f);
+                //55% is grass
+                return rand <= 55 ? 2 : 3;
             }
+            
+            // if (noise > m_maxGrassValue && noise <= m_maxTreeValue)
+            // {
+            //     return 3;
+            // }
 
             return 1;
         }
@@ -85,6 +159,34 @@ namespace JustGame.Script.World
             
             m_groundTilemap.ClearAllTiles();
             m_waterTilemap.ClearAllTiles();
+
+            // var startX = 0;
+            // var endX = 50;
+            // var startY = 0;
+            // var endY = 50;
+            //
+            // for (int i = 0; i < 3; i++)
+            // {
+            //     for (int j = 0; j < 3; j++)
+            //     {
+            //         for (int y = startY; y < endY; y++)
+            //         {
+            //             for (int x = startX; x < endX; x++)
+            //             {
+            //                 SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
+            //             }
+            //             yield return null;
+            //         }
+            //         startX += 50;
+            //         endX += 50;
+            //     }
+            //
+            //     startX = 0;
+            //     endX = 50;
+            //     startY += 50;
+            //     endY += 50;
+            // }
+            
             
             for (int y = 0; y < m_mapHeight; y++)
             {
@@ -92,7 +194,7 @@ namespace JustGame.Script.World
                 {
                     SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
                 }
-
+            
                 yield return null;
             }
 
