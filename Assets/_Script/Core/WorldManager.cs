@@ -41,16 +41,16 @@ namespace JustGame.Script.Managers
             m_cameraFollowing.SetCameraPosition(worldPos);
             m_cameraFollowing.SetTarget(player.transform);
 
-            for (int i = 0; i < m_areas.Length; i++)
-            {
-                m_areas[i].gameObject.SetActive(false);
-            }
+            // for (int i = 0; i < m_areas.Length; i++)
+            // {
+            //     m_areas[i].gameObject.SetActive(false);
+            // }
         }
 
         private void Update()
         {
             if (m_playerRef == null) return;
-            CheckCurrentArea();
+            //CheckCurrentArea();
         }
 
         private void CheckCurrentArea()

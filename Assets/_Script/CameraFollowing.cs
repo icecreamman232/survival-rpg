@@ -11,6 +11,9 @@ namespace JustGame.Script.Common
         [SerializeField] private Transform m_targetTransform;
         [SerializeField] private float m_followingSpeed;
         [SerializeField] private Vector2 m_cameraSize;
+
+        private Vector2 m_topLeft;
+        private Vector2 m_botRight;
         
         private Vector3 m_targetPos;
         private bool m_canFollow;
@@ -19,10 +22,15 @@ namespace JustGame.Script.Common
 
         public Bounds CameraBounds => m_cameraBounds;
 
+        public Vector2 TopLeft => m_topLeft;
+        public Vector2 BotRight => m_botRight;
+
         private void Awake()
         {
             m_canFollow = true;
             m_cameraBounds = new Bounds((Vector2)m_cameraTransform.position, m_cameraSize);
+            m_topLeft = new Vector2(transform.position.x - m_cameraSize.x / 2, transform.position.y + m_cameraSize.y / 2);
+            m_botRight = new Vector2(transform.position.x + m_cameraSize.x / 2, transform.position.y - m_cameraSize.y / 2);
         }
     
         public void SetPermission(bool value)
@@ -49,6 +57,12 @@ namespace JustGame.Script.Common
             m_cameraTransform.position = Vector3.Lerp(m_cameraTransform.position, m_targetPos, Time.deltaTime * m_followingSpeed / 10);
             m_cameraTransform.position = ClampInWorldBounds();
             m_cameraBounds.center = (Vector2)m_cameraTransform.position;
+            
+            m_topLeft.x = transform.position.x - m_cameraSize.x / 2;
+            m_topLeft.y = transform.position.y + m_cameraSize.y / 2;
+
+            m_botRight.x = transform.position.x + m_cameraSize.x / 2;
+            m_botRight.y = transform.position.y - m_cameraSize.y / 2;
         }
 
         private Vector3 ClampInWorldBounds()
@@ -68,6 +82,9 @@ namespace JustGame.Script.Common
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(transform.position,m_cameraSize);
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(m_topLeft,Vector3.one * 0.5f);
+            Gizmos.DrawCube(m_botRight,Vector3.one * 0.5f);
         }
     }
 }

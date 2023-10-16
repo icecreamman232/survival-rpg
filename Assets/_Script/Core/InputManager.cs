@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using JustGame.Script.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace JustGame.Scripts.Managers
 {
@@ -103,6 +104,11 @@ namespace JustGame.Scripts.Managers
 
         public bool GetLeftClick()
         {
+            if (EventSystem.current.currentSelectedGameObject != null)
+            {
+                //Click on an UI element
+                return false;
+            }
             return IsInputActive && Input.GetMouseButton(0);
         }
         

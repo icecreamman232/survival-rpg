@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1636224815
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ca67e9412b2ca334ea350c0526ed9af2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1636224815
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4ff425c720dd4f345be7a4574abedaeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -317,7 +317,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1333356633
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -550,7 +550,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1333356633
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -738,7 +738,7 @@ MonoBehaviour:
   m_movingDirection: {x: 0, y: 0}
   m_obstacleMask:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 272
 --- !u!114 &2923187605176612788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_curTool: 0
+  m_playerToolEvent: {fileID: 11400000, guid: 1a46a5d04402b6849b752df2e61b1ac2, type: 2}
   m_axeHandler: {fileID: 5297702044090423446}
   m_weaponHandler: {fileID: 5302118877277524435}
 --- !u!114 &5302118877277524435

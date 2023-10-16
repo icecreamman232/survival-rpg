@@ -1,3 +1,5 @@
+using System;
+using JustGame.Script.Event;
 using UnityEngine;
 
 namespace JustGame.Script.Character
@@ -16,12 +18,14 @@ namespace JustGame.Script.Character
     public class PlayerToolController : MonoBehaviour
     {
         [SerializeField] private PlayerTool m_curTool;
+        [SerializeField] private PlayerToolEvent m_playerToolEvent;
         [SerializeField] private PlayerAxeHandler m_axeHandler;
         [SerializeField] private PlayerWeaponHandler m_weaponHandler;
 
         private void Start()
         {
             SetTool(PlayerTool.SWORD);
+            m_playerToolEvent.AddListener(SetTool);
         }
 
         public void SetTool(PlayerTool tool)
@@ -39,6 +43,11 @@ namespace JustGame.Script.Character
             }
 
             m_curTool = tool;
+        }
+
+        private void OnDestroy()
+        {
+            m_playerToolEvent.RemoveListener(SetTool);
         }
     }
 }
