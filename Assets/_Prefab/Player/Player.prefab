@@ -254,8 +254,9 @@ GameObject:
   - component: {fileID: 8107208336472268278}
   - component: {fileID: 1865449708469246881}
   - component: {fileID: 4032063603773391641}
+  - component: {fileID: 4791894291804423578}
   - component: {fileID: 2059567830468344167}
-  - component: {fileID: 911373658903837189}
+  - component: {fileID: 6360099314704647920}
   m_Layer: 0
   m_Name: Axe-tool
   m_TagString: Untagged
@@ -358,7 +359,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5287568485362244323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -394,8 +395,35 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
+--- !u!50 &4791894291804423578
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287568485362244323}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!114 &2059567830468344167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +439,7 @@ MonoBehaviour:
   TargetAnimator: {fileID: 1865449708469246881}
   ParameterName: trigger_Axe
   Duration: 0.367
---- !u!114 &911373658903837189
+--- !u!114 &6360099314704647920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,15 +448,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5287568485362244323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d99c116ac8b9a140a6fbf113cc63c43, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cd0fdbb4bc534241b039365ab4e33e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_minDamage: 10
-  m_maxDamage: 10
-  m_invulnerableDurationCause: 0.5
-  m_targetMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &5677204010382089418
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +613,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8450700852573799561}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

@@ -88,6 +88,7 @@ namespace JustGame.Script.Character
             transform.position = Vector2.MoveTowards(transform.position, m_nextPos, Time.deltaTime * m_moveSpeed);
             if ((Vector2)transform.position == m_nextPos)
             {
+                transform.position = m_nextPos;
                 m_isMoving = false;
                 m_movingDirection = Vector2.zero;
             }
