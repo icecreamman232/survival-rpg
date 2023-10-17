@@ -1071,7 +1071,6 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_toolID: 0
-  m_selectLayer: {fileID: 1407951006}
   m_playerToolEvent: {fileID: 11400000, guid: 1a46a5d04402b6849b752df2e61b1ac2, type: 2}
 --- !u!1 &686124968
 GameObject:
@@ -1280,7 +1279,6 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_toolID: 100
-  m_selectLayer: {fileID: 1673489552}
   m_playerToolEvent: {fileID: 11400000, guid: 1a46a5d04402b6849b752df2e61b1ac2, type: 2}
 --- !u!222 &904571743
 CanvasRenderer:
@@ -1301,6 +1299,7 @@ GameObject:
   - component: {fileID: 934572218}
   - component: {fileID: 934572220}
   - component: {fileID: 934572219}
+  - component: {fileID: 934572221}
   m_Layer: 5
   m_Name: Toolbar
   m_TagString: Untagged
@@ -1367,6 +1366,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934572217}
   m_CullTransparentMesh: 1
+--- !u!114 &934572221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934572217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8c1db8751855e42b092a11d4619d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerToolEvent: {fileID: 11400000, guid: 1a46a5d04402b6849b752df2e61b1ac2, type: 2}
+  m_slotSelectLayers:
+  - {fileID: 1407951004}
+  - {fileID: 1673489550}
 --- !u!1 &1060281031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2137,7 @@ GameObject:
   - component: {fileID: 1407951007}
   - component: {fileID: 1407951006}
   m_Layer: 5
-  m_Name: Select-layer
+  m_Name: Weapon-select-layer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2245,7 +2260,7 @@ GameObject:
   - component: {fileID: 1673489553}
   - component: {fileID: 1673489552}
   m_Layer: 5
-  m_Name: Select-layer
+  m_Name: Axe-select-layer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
