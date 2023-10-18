@@ -13,7 +13,7 @@ namespace JustGame.Scripts.Managers
         MOVE_UP,
         MOVE_DOWN,
         
-        USE_ACTIVE_ABILITY = 10,
+        COLLECT_ITEM = 10,
     }
     [Serializable]
     public struct ButtonAssign
