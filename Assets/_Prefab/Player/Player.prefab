@@ -809,9 +809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a5a95919358a14c8519d1fa369cf73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxEnergy: 0
+  m_maxEnergy: 100
   m_curEnergy: 0
-  m_energyEvent: {fileID: 0}
+  m_energyEvent: {fileID: 11400000, guid: 95c4d14d2f2ae3646836a139256260d4, type: 2}
 --- !u!114 &6692557147505322845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,7 +875,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isPermit: 0
-  m_aimComponent: {fileID: 1866142248117713335}
   m_axeRange: 1
+  m_energyConsume: 5
+  m_playerEnergy: {fileID: -4063551628605012002}
+  m_aimComponent: {fileID: 1866142248117713335}
   m_axeDamageArea: {fileID: 4032063603773391641}
   m_useAxeAnim: {fileID: 2059567830468344167}

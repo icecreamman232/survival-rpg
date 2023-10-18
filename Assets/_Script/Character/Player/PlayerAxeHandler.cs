@@ -8,8 +8,10 @@ namespace JustGame.Script.Character
     public class PlayerAxeHandler : MonoBehaviour
     {
         [SerializeField] private bool m_isPermit;
-        [SerializeField] private AimComponent m_aimComponent;
         [SerializeField] private float m_axeRange;
+        [SerializeField] private float m_energyConsume;
+        [SerializeField] private PlayerEnergy m_playerEnergy;
+        [SerializeField] private AimComponent m_aimComponent;
         [SerializeField] private BoxCollider2D m_axeDamageArea;
         [SerializeField] private AnimationParameter m_useAxeAnim;
         private InputManager m_inputManager;
@@ -48,6 +50,9 @@ namespace JustGame.Script.Character
             {
                 yield break;
             }
+            
+            m_playerEnergy.SpentEnergy(m_energyConsume);
+                
             m_AxeInProgress = true;
             var atkPos = (Vector2)transform.position + m_aimComponent.ClampAimDirection * m_axeRange;
             m_axeDamageArea.enabled = true;
