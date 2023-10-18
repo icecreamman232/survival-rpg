@@ -240,12 +240,12 @@ namespace JustGame.Script.World
         {
             int x = Random.Range(1,150);
             int y = Random.Range(1,150);
-            while (m_worldArr[x + y * m_mapWidth] < 1 && m_worldArr[x + y * m_mapWidth]!= 3)
+            while (m_worldArr[x + y * m_mapWidth] != 1)
             {
                 x = Random.Range(1,150);
                 y = Random.Range(1,150);
             }
-
+            Debug.Log($"Value spawnpoint {m_worldArr[x + y * m_mapWidth]}");
             return new Vector2((x - m_mapWidth/2) * 0.5f, (y - m_mapHeight/2)* 0.5f);
         }
     }
