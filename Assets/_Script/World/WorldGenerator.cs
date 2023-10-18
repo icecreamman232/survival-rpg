@@ -240,7 +240,7 @@ namespace JustGame.Script.World
         {
             int x = Random.Range(1,150);
             int y = Random.Range(1,150);
-            while (m_worldArr[x + y * m_mapWidth] < 1)
+            while (m_worldArr[x + y * m_mapWidth] < 1 && m_worldArr[x + y * m_mapWidth]!= 3)
             {
                 x = Random.Range(1,150);
                 y = Random.Range(1,150);
