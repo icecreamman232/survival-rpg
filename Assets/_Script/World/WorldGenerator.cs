@@ -160,34 +160,6 @@ namespace JustGame.Script.World
             m_groundTilemap.ClearAllTiles();
             m_waterTilemap.ClearAllTiles();
 
-            // var startX = 0;
-            // var endX = 50;
-            // var startY = 0;
-            // var endY = 50;
-            //
-            // for (int i = 0; i < 3; i++)
-            // {
-            //     for (int j = 0; j < 3; j++)
-            //     {
-            //         for (int y = startY; y < endY; y++)
-            //         {
-            //             for (int x = startX; x < endX; x++)
-            //             {
-            //                 SetProperTile(x - m_mapWidth/2, y - m_mapHeight/2, m_worldArr[x + y * m_mapWidth]);
-            //             }
-            //             yield return null;
-            //         }
-            //         startX += 50;
-            //         endX += 50;
-            //     }
-            //
-            //     startX = 0;
-            //     endX = 50;
-            //     startY += 50;
-            //     endY += 50;
-            // }
-            
-            
             for (int y = 0; y < m_mapHeight; y++)
             {
                 for (int x = 0; x < m_mapWidth; x++)
@@ -245,7 +217,7 @@ namespace JustGame.Script.World
                 x = Random.Range(1,150);
                 y = Random.Range(1,150);
             }
-            Debug.Log($"Value spawnpoint {m_worldArr[x + y * m_mapWidth]}");
+            //Debug.Log($"Value spawnpoint {m_worldArr[x + y * m_mapWidth]}");
             return new Vector2((x - m_mapWidth/2) * 0.5f, (y - m_mapHeight/2)* 0.5f);
         }
     }
