@@ -66,14 +66,43 @@ namespace JustGame.Script.Managers
             return false;
         }
         /// <summary>
-        /// Remove item at index
+        /// Remove item at index. Return true if sucess removing
         /// </summary>
         /// <param name="index"></param>
-        public void RemoveItem(int index)
+        public bool RemoveItem(int index)
         {
-            if (m_inventory[index] == null) return;
+            if (m_inventory[index] == null)
+            {
+                return false;
+            }
             Destroy(m_inventory[index]);
             m_inventory[index] = null;
+            return true;
+        }
+        
+        /// <summary>
+        /// Remove amount of item at index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public bool RemoveAmountItem(int index, int amount)
+        {
+            if (m_inventory[index] == null)
+            {
+                return false;
+            }
+
+            if (m_inventory[index].Amount <= amount)
+            {
+                RemoveItem(index);
+            }
+            else
+            {
+                m_inventory[index].Amount -= amount;
+            }
+            
+            return true;
         }
     }
 }
