@@ -65,6 +65,16 @@ namespace JustGame.Script.Managers
             itemIndex = -1;
             return false;
         }
+        /// <summary>
+        /// Remove item at index
+        /// </summary>
+        /// <param name="index"></param>
+        public void RemoveItem(int index)
+        {
+            if (m_inventory[index] == null) return;
+            Destroy(m_inventory[index]);
+            m_inventory[index] = null;
+        }
     }
 }
 
