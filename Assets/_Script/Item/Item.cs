@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace JustGame.Script.Items
 {
+    [Serializable]
     public enum ItemCategory
     {
         RAW,

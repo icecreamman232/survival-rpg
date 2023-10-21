@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using JustGame.Script.Items;
 using JustGame.Scripts.Managers;
@@ -15,10 +14,56 @@ namespace JustGame.Script.Managers
         {
             m_inventory = new List<Item>();
         }
-
+        
+        /// <summary>
+        /// Add this item to inventory. If this item's exist, will increase its amount
+        /// </summary>
+        /// <param name="item"></param>
         public void AddItem(Item item)
         {
-            m_inventory.Add(item);
+            if (HasItem(item, out var index))
+            {
+                AddItemAmount(index,item.Amount );
+            }
+            else
+            {
+                m_inventory.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Add amount to this item
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="amount"></param>
+        public void AddItemAmount(int index, int amount)
+        {
+            m_inventory[index].Amount += amount;
+        }
+        
+        /// <summary>
+        /// Check if this item's exist. If true return its index in inventory.
+        /// Return -1 if it's not found.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="itemIndex"></param>
+        /// <returns></returns>
+        public bool HasItem(Item item, out int itemIndex)
+        {
+            for (int i = 0; i < m_inventory.Count; i++)
+            {
+                if (m_inventory[i].Category == item.Category)
+                {
+                    if (m_inventory[i].Name == item.Name)
+                    {
+                        itemIndex = i;
+                        return true;
+                    }
+                }
+            }
+
+            itemIndex = -1;
+            return false;
         }
     }
 }
